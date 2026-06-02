@@ -49,9 +49,12 @@ const globalLimiter = rateLimit({
 });
 
 const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 10, // Stricter for auth routes
-  message: { success: false, message: 'Too many auth attempts. Try again in 15 minutes.' },
+  windowMs: 15 * 60 * 1000,
+  max: 1000,
+  message: {
+    success: false,
+    message: 'Too many auth attempts. Try again in 15 minutes.'
+  }
 });
 
 app.use(globalLimiter);
